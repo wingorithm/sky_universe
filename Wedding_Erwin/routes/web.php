@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MarketplaceController;
 use App\Http\Controllers\roomController;
@@ -37,5 +38,7 @@ Route::middleware('auth')->group(function(){
     Route::post('/home', [roomController::class, 'logout'])->name('logout');
     Route::get('/tictactoe/{room}', [TictactoeController::class, 'index'])->name('tictactoe');
     Route::post('/turn', [TictactoeController::class, 'turn'])->name('turn');
-    Route::get('/marketplace', [MarketplaceController::class, 'index'])->name('marketplace');
+    Route::get('/marketplace/{partner?}', [MarketplaceController::class, 'index'])->name('marketplace');
+    Route::get('/checkout/{theme?}', [MarketplaceController::class, 'checkout'])->name('checkout');
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 });

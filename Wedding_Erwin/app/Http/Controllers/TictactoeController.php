@@ -7,6 +7,8 @@ use App\Models\room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class TictactoeController extends Controller
 {
@@ -20,8 +22,10 @@ class TictactoeController extends Controller
             return redirect()->route('home');
         }
     }
-
+    
     public function turn(Request $request){
+        // $user = Auth::user();
+        // if(DB::table('users')->where('id', $user->DT))
         event(new TictactoeTurn($request->room, $request->cell, $request->symbol));
         return response()->json(["success" => $request->all()]);
     }

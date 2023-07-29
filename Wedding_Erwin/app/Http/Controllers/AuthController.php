@@ -17,9 +17,10 @@ class AuthController extends Controller
     }
 
     public function store_register(Request $request){
-        $gendercode = $request->gender == 'Male' ? '1' : '2';
-        $id = 'SKY' . $request->DT . $gendercode;
+        $genderCode = $request->gender == "male" ? "01" : "02";
+        $id = "SKY" . $request->DT . $genderCode;
         $request->merge(['id' => $id]);
+        // dd($genderCode);
 
          // ----------------------------
         //  $img = $request->image;
@@ -46,15 +47,15 @@ class AuthController extends Controller
             'password_confirmation' => 'required|string|',
             'birthday' => 'required|date',
             'phone' => 'required|regex:/^[0-9]{10,14}$/',
-            'genderState' => 'required|in:Male,Female',
+            'gender' => 'required|in:male,female',
             // 'image' => 'required|image',
         ], [
             'id' => "ID DT sudah terpakai" 
         ]);
         // $img = $request->image;
         $uploaded_image = $request->image;
-        Storage::putFileAs('public/profiles', $uploaded_image, $id . ".jpeg");
-        $image_path = 'public/profiles' . $id . ".jpeg";
+        Storage::putFileAs('profiles/', $uploaded_image, $id . ".jpeg");
+        $image_path = $id . ".jpeg";
 
         $user = User::create([
             'id' => $id,
@@ -64,7 +65,7 @@ class AuthController extends Controller
             'password' => Hash::make( $data['password']),
             'birthday' => $data['birthday'],
             'phone' => '+62' . $data['phone'], 
-            'genderState' => $data['genderState'], 
+            'gender' => $data['gender'], 
             'image' => $image_path, 
             'status' => 'offline', 
         ]);

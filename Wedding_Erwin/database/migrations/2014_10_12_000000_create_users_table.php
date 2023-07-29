@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('password');
             $table->date('birthday'); 
             $table->string('phone'); 
-            $table->enum('genderState', ['Male', 'Female']); 
+            $table->enum('gender', ['male', 'female']); 
             $table->string('image'); 
             $table->enum('status', ['offline', 'online', 'banned']); 
             $table->enum('role', ['user', 'admin'])->default('user'); 

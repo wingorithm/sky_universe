@@ -38,6 +38,7 @@ class TictactoeTurn implements ShouldBroadcast
      */
     public function broadcastOn()
     {
+        
         return new Channel('tictactoe.' . $this->room);
     }
 

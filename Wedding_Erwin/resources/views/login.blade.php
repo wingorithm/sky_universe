@@ -41,6 +41,7 @@
           </div>
         </div>
         <button type="submit" class="btn btn-primary" style="12em">Login</button>
+        <p>Belum punya akun? <a href="{{route('register')}}">register</a></p>
     </form>
 </body>
 </html>

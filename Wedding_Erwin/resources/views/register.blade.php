@@ -59,10 +59,11 @@
             <input type="tel" name="phone" class="form-control" id="phone" value="{{old('phone')}}" placeholder="your phone number">
         </div>
         <div class="col-md-6">
-            <label for="genderState" class="form-label">Gender</label>
-            <select id="genderState" name="genderState" class="form-select">
-                <option @if(old('genderState') == 'Male') selected @endif value="Male"> Male </option>
-                <option @if(old('genderState') == 'Female') selected @endif value="Female"> Female </option>
+            <label for="gender" class="form-label">Gender</label>
+            <select name="gender" class="form-select" id="gender">
+                <option>Select Your</option>
+                <option @if (old('gender') == 'male') selected @endif value="male">Male</option>
+                <option @if (old('gender') == 'female') selected @endif value="female">Female</option>
             </select>
         </div>
         
